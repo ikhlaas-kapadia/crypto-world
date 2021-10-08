@@ -7,8 +7,12 @@ import '../App.css';
 
 const Navbar = () => {
     return ( 
+      <React.Fragment>
         <Nav className="flex-column side-nav-container" variant="pills" defaultActiveKey="/home">
-          <Nav.Item>
+        <div className="logo-container">
+          <a href=""><img src={logo} alt="logo" className="logo" /></a>
+        </div>
+          <Nav.Item >
             <Nav.Link eventKey="home" href="/home">Home</Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -23,6 +27,7 @@ const Navbar = () => {
             </Nav.Link>
           </Nav.Item>
         </Nav>
+      </React.Fragment>
 
     );
 }
