@@ -1,5 +1,8 @@
 
 /* -------- RESET --------- */
+*{
+  box-sizing: border-box;
+}
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -23,7 +26,7 @@ time, mark, audio, video {
 
 body {
     line-height:1;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-size: 22px;
 }
 
@@ -97,44 +100,58 @@ input, select {
     vertical-align:middle;
 }
 
-/* ----- Side Navbar ------- */
-.wrapper {
+.App {
   display: flex;
-  width: 100%;
-  flex-direction: column;
 }
+/* ----- Main Content Box ------- */
+.main-content-container {
+background-color: #180931;
+z-index: 999;
+width: calc(100% - 250px);
+position: relative;
+left: 250px;
+min-height: 100vh;
+color: white;
+}
+
+/* ----- Side Navbar ------- */
+
 .side-nav-container {
   width: 250px;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  z-index: 999;
-  background: #C6FFF5;
+  /* z-index: 999; */
+  background-color: #C6FFF5;
   color: #000000;
   transition: all 0.3s;
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 }
 
-.nav-item {
-  margin-bottom: 40px;
+.nav {
+  height: inherit;
+  margin: 0 auto;
+  padding-top: 20px;
 }
+
 .nav-link{
   color: #000000;
+  margin-bottom: 20px;
+  
  
 }
+.nav-link:hover {
+  cursor: pointer;
+}
 
-.logo-container {
-  margin-top: 70px;
-  margin-bottom: 50px;
-  width: 85px;
+
+
+.logo {
+  width: 75px;
+  margin-bottom: 20px;
   
 }
 
-.logo {
-  width: 100%;
-  height: 100%;
-}
