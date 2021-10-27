@@ -37,7 +37,7 @@ class SideNav extends React.Component {
         <div className={viewSideBar}>
           <CloseNavBtn handleNavClose={this.handleNavClose}/>
           <Navbar className="flex-column w-100">
-            <Image src={logo} className="logo"/>
+            <a href="#home"><Image src={logo} className="logo"/></a>
             <Container fluid className="flex-column justify-content-center">
               <Nav className="me-auto flex-column w-75 justify-content-center" > 
                 <Nav.Link href="#home" className="d-block"><i className='bx bxs-home nav-icon'></i>Home</Nav.Link>

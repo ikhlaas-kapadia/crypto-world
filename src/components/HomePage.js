@@ -41,11 +41,15 @@ const HomePage = () => {
 
     return (
         <div className="main-content-container">
-            <div className="main-content mt-5">
+            <div className="main-content mt-4">
                 <MainHeading >Crypto World</MainHeading>
-                <SummaryText stats={stats} isLoading={isLoading} isError={isError}></SummaryText>
-                    
+                <SummaryText stats={stats} isLoading={isLoading} isError={isError}></SummaryText>    
                 <CurrentStats stats={stats}/>
+                <div className="container btn-container">
+                    <div className="row justify-content-center">
+                        <a href="#cryptos"><button className="button">View Cryptos</button></a>
+                    </div>
+                </div>
             </div>
             
         </div>
@@ -69,11 +73,11 @@ const SummaryText = (props) => {
     return(
         <>
         
-            <p className="text-center sub-heading">
+            <h2 className="text-center sub-heading">
                 {isError && "Error fetching data"}
                 {isLoading && "....Loading data"}
                 {stats !== null && `The total Market Cap today is $${millify(stats.data.totalMarketCap)}`}
-            </p>
+            </h2>
         
           
         </>
@@ -85,9 +89,9 @@ const CurrentStats = (props) => {
     const  stats = (props.stats);
     if(stats !== null) {
         return (
-            <Container fluid>
-            <Row>
-                <Col sm={6} md={6} className="h-100">
+            <Container>
+            <Row className="justify-content-center">
+                <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
                         <Card.Title className="text-center">Cryptos</Card.Title>
@@ -97,7 +101,7 @@ const CurrentStats = (props) => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col sm={6} md={6} className="h-100">
+                <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
                         <Card.Title className="text-center">Exchanges</Card.Title>
@@ -107,17 +111,19 @@ const CurrentStats = (props) => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col sm={6} md={6} className="h-100">
+            </Row>
+            <Row className="justify-content-center">
+                <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
-                        <Card.Title className="text-center">24 hour Volume</Card.Title>
+                        <Card.Title className="text-center">24 hr Volume</Card.Title>
                         <Card.Text className="text-center">
                             ${millify(stats.data.total24hVolume)}
                         </Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col sm={6} md={6} className="h-100">
+                <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
                         <Card.Title className="text-center">Total Markets</Card.Title>
@@ -134,61 +140,18 @@ const CurrentStats = (props) => {
     } else {
         return <></>
     }
- 
-       
-        
-        //  <Container fluid>
-        //     <Row>
-        //         <Col sm={6} md={6} className="h-100">
-        //             <Card className="stat-card h-100">
-        //                 <Card.Body>
-        //                 <Card.Title className="text-center">Cryptos</Card.Title>
-        //                 <Card.Text>
-        //                     {stats.data && millify(stats.data.totalCoins)}
-        //                 </Card.Text>
-        //                 </Card.Body>
-        //             </Card>
-        //         </Col>
-        //         <Col sm={6} md={6} className="h-100">
-        //             <Card className="stat-card h-100">
-        //                 <Card.Body>
-        //                 <Card.Title className="text-center">Exchanges</Card.Title>
-        //                 <Card.Text>
-        //                     {stats.data && millify(stats.data.totalExchanges)}
-        //                 </Card.Text>
-        //                 </Card.Body>
-        //             </Card>
-        //         </Col>
-        //         <Col sm={6} md={6} className="h-100">
-        //             <Card className="stat-card h-100">
-        //                 <Card.Body>
-        //                 <Card.Title className="text-center">24 hour Volume</Card.Title>
-        //                 <Card.Text>
-        //                     {stats.isLoading ? '...isLoading' : stats.globalStats.total24hVolume}
-        //                 </Card.Text>
-        //                 </Card.Body>
-        //             </Card>
-        //         </Col>
-        //         <Col sm={6} md={6} className="h-100">
-        //             <Card className="stat-card h-100">
-        //                 <Card.Body>
-        //                 <Card.Title className="text-center">Total Markets</Card.Title>
-        //                 <Card.Text>
-        //                     {stats.isLoading ? '...isLoading' : millify(stats.globalStats.totalMarkets)}
-        //                 </Card.Text>
-        //                 </Card.Body>
-        //             </Card>
-        //         </Col>
-        //     </Row>
-            
-        // </Container>
-    
 }
+
+
+
+
+
+
 
 
 export{
     HomePage,
     MainHeading,
     SummaryText,
-    CurrentStats
+    CurrentStats,
 }
