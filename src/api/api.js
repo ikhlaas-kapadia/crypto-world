@@ -15,8 +15,8 @@ async function fetchData (page) {
         return data;
 
     } catch(error) {
-	console.error(error);
-    return [];
+	
+        return error;
     }
 }
 // fetchData('stats');
