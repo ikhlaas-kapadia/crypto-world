@@ -1,24 +1,34 @@
 
 import './App.css';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, fas } from '@fortawesome/free-solid-svg-icons'
-import {Container, Row } from 'react-bootstrap';
 
+import SideNav from './components/SideNav';
+import CryptoPage from './components/CryptoPage';
+import {HomePage}  from './components/HomePage';
 
-
-import Navbar from './components/Navbar.jsx';
-import MainContent from './components/MainContent.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-          <Navbar/>
-          <MainContent/>
-    </div>
+
+      <div className="App">
+        <SideNav/>
+        <Router>
+          <Switch>
+            <Route path="/crypto">
+              <CryptoPage />
+            </Route>
+            <Route path="/">
+              <HomePage/>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+  
   );
 }
 
-
-library.add(fab, faCheckSquare, faCoffee, fas)
 export default App;
