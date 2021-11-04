@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Col, Card, Row } from 'react-bootstrap'
 import fetchData from '../api/api';
+import Pageheading from './PageHeading';
 
 import millify from "millify";
 
@@ -21,7 +22,7 @@ const HomePage = () => {
     React.useEffect(() => {
 
         //This is an async function to fetch data
-        const globalStats = fetchData('cryptos');
+        const globalStats = fetchData('global-stats');
         globalStats.then((data)=>{
             console.log(data);
             // console.dir(data);
@@ -42,7 +43,7 @@ const HomePage = () => {
     return (
         <div className="main-content-container">
             <div className="main-content mt-4">
-                <MainHeading >Crypto World</MainHeading>
+                <Pageheading >Crypto World</Pageheading>
                 <SummaryText stats={stats} isLoading={isLoading} isError={isError}></SummaryText>    
                 <CurrentStats stats={stats}/>
                 <div className="container btn-container">
@@ -58,12 +59,7 @@ const HomePage = () => {
 }
 
 
-const MainHeading = (props) => {
-    const headingText = props.children
-    return(
-                <h1 className="text-center page-name">{headingText}</h1>
-    )
-}
+
 
 //This component will fetch data
 const SummaryText = (props) => {
@@ -151,7 +147,6 @@ const CurrentStats = (props) => {
 
 export{
     HomePage,
-    MainHeading,
     SummaryText,
     CurrentStats,
 }
