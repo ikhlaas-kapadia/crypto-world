@@ -40,10 +40,10 @@ class SideNav extends React.Component {
             <a href="#home"><Image src={logo} className="logo"/></a>
             <Container fluid className="flex-column justify-content-center">
               <Nav className="me-auto flex-column w-75 justify-content-center" > 
-                <Nav.Link href="#home" className="d-block"><i className='bx bxs-home nav-icon'></i>Home</Nav.Link>
-                <Nav.Link href="#link"><i className='bx bx-bitcoin nav-icon'></i>Crypto</Nav.Link>
-                <Nav.Link href="#link"><i className='bx bxs-wallet nav-icon'></i>Portfolio</Nav.Link>
-                <Nav.Link href="#link"><i className='bx bxs-news nav-icon'></i>News</Nav.Link>
+                <Nav.Link href="/" className="d-block"><i className='bx bxs-home nav-icon'></i>Home</Nav.Link>
+                <Nav.Link href="/cryptocurrencies"><i className='bx bx-bitcoin nav-icon'></i>Crypto</Nav.Link>
+                <Nav.Link href="/portfolio"><i className='bx bxs-wallet nav-icon'></i>Portfolio</Nav.Link>
+                <Nav.Link href="/news"><i className='bx bxs-news nav-icon'></i>News</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
