@@ -3,8 +3,8 @@ import axios from "axios";
 
 
 //Fetch Summary stats from proxy api 
-async function fetchData (page) {
-    let url = `http://localhost:4999/api/v1/${page}`;
+async function fetchData (page, params = '') {
+    let url = `http://localhost:4999/cryptoworld/${page}?${params}`;
     
     try {
         let response = await axios.get(url);
