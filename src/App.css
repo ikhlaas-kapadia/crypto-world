@@ -11,6 +11,7 @@
 html, body {
     font-family: 'Poppins', sans-serif;
     /* height: 100vh; */
+    
 }
 
 
@@ -27,8 +28,9 @@ html, body {
  background-color: #d0fff7;
  overflow-x: hidden;
  font-size: 1.5rem;
- opacity: 1;
+ opacity: 0.98;
  transition: all 0.1s linear;
+
  
  
  /* padding-top: 20px; */
@@ -40,20 +42,26 @@ html, body {
 }
 
 .logo {
-  width: 60px;
+  width: 6rem;
   margin-bottom: 50px;
   margin-top: 30px;
 }
 
 .navbar {
   padding: 0;
+  
 }
+.nav-link {
+   color: #383838 !important;
+}
+
 .nav-icon {
   margin-right: 20px;
 
 }
-.nav-icon:hover {
+.nav-link:hover {
   cursor: pointer;
+  background-color: white;
 }
 .nav-burger {
   margin-top: 10px;
@@ -93,23 +101,134 @@ html, body {
   overflow: auto;
   display: flex;
   justify-content: center;
-
 }
+
 .main-content {
   width: 70%;
 }
 
 .page-name {
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.sub-heading {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 /* ---- Stat Cards ---- */
 .stat-card {
   color: black;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
   background-color: #a6fbff;
 }
 .card-text {
   color : #383838
+}
+.card-title {
+  font-weight: bold;
+}
+
+
+.button {
+  width: 150px;
+  height: 50px;
+  font-size: 1rem;
+  border-radius: 3rem;
+  background-color: white;
+  border: 0px;
+  margin-bottom: 1rem;
+}
+
+.button a, .button a:hover{
+  text-decoration: none;
+  color: inherit;
+  
+}
+.button:hover {
+  cursor: pointer;
+  border: 5px solid #cbf3ff;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .main-content-container {
+    margin-left: 215px;
+    width: calc(100% - 215px);
+  }
+
+  .side-nav-container {
+    padding-top: 5rem;
+  }
+
+  .hide-sidenav {
+    height: 100%;
+    opacity: 1;
+  }
+
+  .burger-container,
+  .close-btn-container {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .page-name {
+    margin-bottom: 4.5rem;
+    margin-top: 3rem;
+    font-size: 4rem;
+  }
+
+  .sub-heading {
+    margin-bottom: 6.5rem;
+    font-size: 2rem;
+  }
+
+  .btn-container {
+    margin-top: 6rem;
+  }
+  .button{
+    width: 200px;
+    height: 85px;
+    font-size: 1.4rem;
+
+  }
+
+  .stat-card {
+    font-size: 1.5rem;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+  .crypto-list-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* -----Crypto Cards ----- */
+.crypto-card {
+  color: black;
+}
+
+.list-value{
+  font-weight: bold;
+}
+
+
+/* ---- Pagination ----- */
+.pagination-container {
+  margin-top: 1rem;
+}
+
+/* ---Crypto list ---- */
+.coin-icon {
+  width: 40px;
+  height: 40px;
 }
