@@ -6,42 +6,70 @@ import fetchData from '../api/api';
 
 const PriceChart = (props) => {
     const { timeFrame, id } = props;
+    const [pricesArray, setPricesArray] = useState(null);
+    const [datesArray, setDatesArray] = useState(null);
     useEffect(() => {
-        const param = `id/history/${timeFrame}`;
+        const param = `${id}/history/${timeFrame}`;
         const coinHistory = fetchData('coin', param);
         coinHistory.then((data)=>{
-       
+            const { history } = data.data;
+            let pricesArray = [];
+            let datesArray = [];
             // console.log(history);
-            // console.dir(data);
-            // if(data.status === "success"){
-            //     setCryptoInfo(coinInfo);
-            //     setIsLoading(false);
-            //     setIsError(false);
-            //     return;
-            // } else {
-            //     setIsError(true);
-            //     setIsLoading(false);
-            // }
+            history.forEach(item => {
+                pricesArray.push(item.price);
+                datesArray.push(new Date(item.timestamp).toLocaleDateString());
+            });
+            
+            // console.log(pricesArray);
+            // console.log(datesArray);
+            
+            if(data.status === "success"){
+                setPricesArray(pricesArray);
+                setDatesArray(datesArray);
+               
+                return;
+            } 
         }).catch((err)=>{console.log(err)});
-    }, [])
+    }, [timeFrame, id]);
     const data = {
-        labels: ['1', '2', '3', '4', '5', '6'],
+        labels: datesArray,
         datasets: [
             {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label:  'Price in USD',
+            data: pricesArray,
             fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: "yellow",
+            borderColor: "yellow"
             },
         ],
     };
 
     const options = {
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white'
+                }
+            }
+        },
         scales: {
             y: {
-            beginAtZero: true
+                ticks: {
+                    beginAtZero: true,
+                    color:'white',
+                    size: 20
+                }
+            },
+          x: {
+                ticks: {
+                    beginAtZero: true,
+                    color:'white',
+                    size: 20
+                }
             }
+            
         }
     };
     return (
