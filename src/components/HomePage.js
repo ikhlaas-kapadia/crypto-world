@@ -22,13 +22,14 @@ const HomePage = () => {
     React.useEffect(() => {
 
         //This is an async function to fetch data
-        const globalStats = fetchData('global-stats');
-        globalStats.then((data)=>{
+        const globalStatsData = fetchData('global-stats');
+        globalStatsData.then((data)=>{
+            const globalStats = data.data;
             console.log(data);
             // console.dir(data);
-            if(data.hasOwnProperty("totalCoins") & !data.isAxiosError){
+            if(data.status === "success" & !data.isAxiosError){
                 setStats({  
-                    data
+                    globalStats
                 })
                 setIsLoading(false);
                 setIsError(false);
@@ -37,7 +38,7 @@ const HomePage = () => {
                 setIsError(true);
                 setIsLoading(false);
             }
-        });
+        }).catch((err)=>{console.log(err)});
     }, []);
 
     return (
@@ -72,7 +73,7 @@ const SummaryText = (props) => {
             <h2 className="text-center sub-heading">
                 {isError && "Error fetching data"}
                 {isLoading && "....Loading data"}
-                {stats !== null && `The total Market Cap today is $${millify(stats.data.totalMarketCap)}`}
+                {stats !== null && `The total Market Cap today is $${millify(stats.globalStats.totalMarketCap)}`}
             </h2>
         
           
@@ -90,9 +91,9 @@ const CurrentStats = (props) => {
                 <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
-                        <Card.Title className="text-center">Cryptos</Card.Title>
+                        <Card.Title className="text-center">Total Cryptos</Card.Title>
                         <Card.Text className="text-center">
-                            {millify(stats.data.totalCoins)}
+                            {millify(stats.globalStats.totalCoins)}
                         </Card.Text>
                         </Card.Body>
                     </Card>
@@ -100,31 +101,22 @@ const CurrentStats = (props) => {
                 <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
-                        <Card.Title className="text-center">Exchanges</Card.Title>
+                        <Card.Title className="text-center">Total Exchanges</Card.Title>
                         <Card.Text className="text-center">
-                            {millify(stats.data.totalExchanges)}
+                            {millify(stats.globalStats.totalExchanges)}
                         </Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
             <Row className="justify-content-center">
-                <Col md={4} className="h-100">
-                    <Card className="stat-card h-100">
-                        <Card.Body>
-                        <Card.Title className="text-center">24 hr Volume</Card.Title>
-                        <Card.Text className="text-center">
-                            ${millify(stats.data.total24hVolume)}
-                        </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                
                 <Col md={4} className="h-100">
                     <Card className="stat-card h-100">
                         <Card.Body>
                         <Card.Title className="text-center">Total Markets</Card.Title>
                         <Card.Text className="text-center">
-                            {millify(stats.data.totalMarkets)}
+                            {millify(stats.globalStats.totalMarkets)}
                         </Card.Text>
                         </Card.Body>
                     </Card>
