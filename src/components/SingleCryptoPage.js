@@ -19,7 +19,6 @@ const SingleCrypto = () => {
         const coinData = fetchData('coin', id);
         coinData.then((data)=>{
             const coinInfo = data.data.coin;
-            console.log(coinInfo);
             // console.dir(data);
             if(data.status === "success"){
                 setCryptoInfo(coinInfo);
