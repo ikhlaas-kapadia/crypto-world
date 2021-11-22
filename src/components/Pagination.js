@@ -10,17 +10,17 @@ const CryptoList = (props) => {
             <Container className="crypto-list-container">
                 <Row>
                         {paginatedData && paginatedData.map((currency, index) => (
-                            <Col sm={6} md={6} lg={4} xl={3} className="mb-4" key={currency.rank}>
+                            <Col sm={6} md={6} lg={4} xl={3} className="mb-4" key={currency.id}>
                                 <Card className="crypto-card">
                                     <Card.Header className="text-center d-flex justify-content-between">
-                                        <span className="align-self-center">{currency.rank} - {currency.name}</span> 
+                                        <span className="align-self-center"><a href={"/crypto/" + currency.id} target="_blank">{currency.rank} - {currency.name}</a></span> 
                                         <div><img className="coin-icon" src={currency.iconUrl} alt={currency.name} logo/></div>
                                     </Card.Header>
                                     <Card.Body  >
                                         <Card.Text className="text-left">
                                         <p>Price:  <span className="list-value">${millify(currency.price)}</span></p>
-                                        <p>Market Cap: <span className="list-value">{millify(currency.marketCap)}</span></p>
-                                        <p>Daily change: <span className="list-value">{currency.change < 0 ? currency.change : '+' + currency.change} %</span></p>
+                                        <p>Market Cap: <br></br><span className="list-value">{millify(currency.marketCap)}</span></p>
+                                        <p>Daily change: <br></br><span className="list-value">{currency.change < 0 ? currency.change : '+' + currency.change} %</span></p>
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
@@ -46,15 +46,15 @@ const Pagination = (props) => {
 
 
     useEffect(()=>{
-        if(data.coins.length > 0) {
-            setPages(Math.ceil(data.coins.length / props.itemsPerPage));
-            setFirstPage(data.coins.length - (data.coins.length - 1));
-            setLastPage(Math.ceil(data.coins.length / props.itemsPerPage));
+        if(data.length > 0) {
+            setPages(Math.ceil(data.length / props.itemsPerPage));
+            setFirstPage(data.length - (data.length - 1));
+            setLastPage(Math.ceil(data.length / props.itemsPerPage));
             let endIndex = (currentPage * props.itemsPerPage) - 1;
             let startIndex = (endIndex - props.itemsPerPage) + 1;
             let paginatedData = [];
             for (let i = startIndex; i <= endIndex; i++) {
-                const element = data.coins[i];
+                const element = data[i];
                 if(element) {
                     paginatedData.push(element);
                 }
